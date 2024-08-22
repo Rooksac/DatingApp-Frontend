@@ -28,53 +28,44 @@ function AuthStack() {
 function AuthenticatedStack() {
   return (
     <Tab.Navigator>
-    <Tab.Screen
-      name="Login"
-      component={LoginScreen}
-      options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="log-in" color={color} size={size} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="Home"
-      component={HomeScreen}
-      options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="home" color={color} size={size} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="Map"
-      component={MapScreen}
-      options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="map" color={color} size={size} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="Profile"
-      component={UserProfileScreen}
-      options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="person" color={color} size={size} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="Settings"
-      component={SettingsScreen}
-      options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="settings" color={color} size={size} />
-        ),
-      }}
-    />
-  </Tab.Navigator>
-  )
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Map"
+        component={MapScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="map" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={UserProfileScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="settings" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
 }
 
 export default function App() {
@@ -92,12 +83,11 @@ export default function App() {
 
   return (
     <>
-    <StatusBar style="auto" />
-    <NavigationContainer>
-    {session && session.user ? <AuthenticatedStack /> : <AuthStack />}
-    </NavigationContainer>
+      <StatusBar style="auto" />
+      <NavigationContainer>
+        {session && session.user ? <AuthenticatedStack /> : <AuthStack />}
+      </NavigationContainer>
     </>
-
   );
 }
 
