@@ -1,29 +1,33 @@
 import { useState } from "react";
-import { View, Text, Alert, StyleSheet, Button, TextInput } from "react-native";
+import { View, Text, Button, TextInput, Alert } from "react-native";
 import { supabase } from "../api/supabase";
 
-function LoginScreen({ navigation }) {
+
+function SignupScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function signInWithEmail() {
-    setLoading(true);
-    const { data, error } = await supabase.auth.signInWithPassword({
+  async function signUpWithEmail() {
+    setLoading(true)
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.signUp({
       email: email,
       password: password,
-    });
-    console.log(data);
+    })
 
-    if (error) Alert.alert(error.message);
-    setLoading(false);
+    if (error) Alert.alert(error.message)
+    if (!session) Alert.alert('Please check your inbox for email verification!')
+    setLoading(false)
   }
 
   return (
     <>
-      <View>
-        <Text>Login Screen</Text>
-        <TextInput
+    <View>
+      <Text>Signup Screen</Text>
+      <TextInput
           label="Email"
           onChangeText={(text) => setEmail(text)}
           value={email}
@@ -39,14 +43,14 @@ function LoginScreen({ navigation }) {
           autoCapitalize="none"
         />
         <Button
-          title="Sign In"
+          title="Sign Up"
           disabled={loading}
-          onPress={() => signInWithEmail()}
+          onPress={() => signUpWithEmail()}
         />
-        <Button title="Sign Up" onPress={() => navigation.replace("Signup")} />
+      <Button title="Log In" onPress={() =>navigation.replace('Login')} />
       </View>
     </>
   );
 }
 
-export default LoginScreen;
+export default SignupScreen;
