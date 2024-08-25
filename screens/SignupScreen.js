@@ -47,7 +47,7 @@ function SignupScreen({ navigation }) {
           disabled={loading}
           onPress={() => signUpWithEmail()}
         />
-      <Button title="Log In" onPress={() =>navigation.replace('Login')} />
+      <Button title="Login Instead" onPress={() =>navigation.replace('Login')} />
       </View>
     </>
   );

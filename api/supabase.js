@@ -2,23 +2,21 @@ import { AppState } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = "https://kowqljzwwvxfuckdhqnc.supabase.co";
+const supabaseUrl = "https://xlyrxkgrlnkvtkbqufkx.supabase.co";
 const supabaseAnonKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtvd3Fsanp3d3Z4ZnVja2RocW5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQxODA1MTMsImV4cCI6MjAzOTc1NjUxM30.F71lYPH9rnLqz8RngsmZQUmvJeLtB1i6betkBt7I_FU";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhseXJ4a2dybG5rdnRrYnF1Zmt4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQ1MTczMzgsImV4cCI6MjA0MDA5MzMzOH0.h-0knvwpqOj2Hpp6uBXGMfukY3jh-7t8aLvlc5ChN5M";
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     storage: AsyncStorage,
-    autoRefreshToken: false,
-    persistSession: false,
+    autoRefreshToken: true,
+    persistSession: true,
     detectSessionInUrl: false,
   },
 });
 
-
 //turn autorefreshtoken and persistsession to false to test session tokens.
 //turn authrefreshtoken and presistsession to true for correct functionality.
-
 
 // Tells Supabase Auth to continuously refresh the session automatically
 // if the app is in the foreground. When this is added, you will continue

@@ -39,11 +39,11 @@ function LoginScreen({ navigation }) {
           autoCapitalize="none"
         />
         <Button
-          title="Sign In"
+          title="Login"
           disabled={loading}
           onPress={() => signInWithEmail()}
         />
-        <Button title="Sign Up" onPress={() => navigation.replace("Signup")} />
+        <Button title="Sign Up Instead" onPress={() => navigation.replace("Signup")} />
       </View>
     </>
   );
